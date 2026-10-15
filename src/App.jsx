@@ -20,15 +20,19 @@ function App() {
 
   return (
     <>
-    <div className='container'>
-      <div className='row'>
-        {products.map((product) => (
-          <div className='col-md-3' key={product.id}>
-            <CardItem className="h-100" product={product} />
-          </div>
-        ))}
+    <main className='store-page'>
+      <div className='container'>
+        <div className='row g-4'>
+          {products.map((product) => (
+            <div className='col-12 col-sm-6 col-lg-4 col-xl-3' key={product.id}>
+              <div className='store-item'>
+                <CardItem className="h-100" product={product} />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </main>
     </>
   )
 }
