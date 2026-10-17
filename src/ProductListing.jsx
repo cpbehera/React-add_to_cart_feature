@@ -1,7 +1,20 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import CartContext from './Context/CartContext';
 
 function CardItem({ product }) {
+  const { cart, setCart } = useContext(CartContext);
+
+  const addToCart = (product) => {
+    setCart((prevcart) => {
+      return [...prevcart, { ...product, quantity: 1 }];
+    })
+    // Display a toast notification when the product is added to the cart
+    toast.info(`${product.title} added to cart!`,{autoClose : 1000,});
+  }
+
   return (
     <Card className='cardi h-100'>
       <div className='cardi-media'>
@@ -21,9 +34,10 @@ function CardItem({ product }) {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <Button variant="primary" className='cardi-btn mt-auto'>
+        <Button variant="primary" className='cardi-btn mt-auto' onClick={() => addToCart(product)}>
           Add to Cart
         </Button>
+        
       </Card.Body>
 
       {/* Scoped styles */}
