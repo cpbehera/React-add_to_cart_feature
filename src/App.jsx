@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CardItem from './ProductListing.jsx';
-import Header from './Navbar.jsx';
+import CardItem from './pages/ProductListing.jsx';
+import Header from './components/Navbar.jsx';
 import './App.css'
 import { ToastContainer } from 'react-toastify';
 

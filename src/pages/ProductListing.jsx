@@ -1,11 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { toast } from 'react-toastify';
 import { useContext } from 'react';
-import CartContext from './Context/CartContext';
+import CartContext from '../Context/CartContext';
 
 function CardItem({ product }) {
   const { cart, setCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const addToCart = (product) => {
     setCart((prevcart) => {
@@ -13,6 +15,7 @@ function CardItem({ product }) {
     })
     // Display a toast notification when the product is added to the cart
     toast.info(`${product.title} added to cart!`,{autoClose : 1000,});
+    navigate('/cart');
   }
 
   return (
